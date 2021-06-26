@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html  lang = "pt-br">
+<head>
+    <meta  charset = " utf-8 " />
+    <title> Condicionais: Tarefa 1 </title>
+    <style>
+        p{
+            color: purple;
+            margin: 0.5em 0;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .preview{
+            color: green;
+            margin: auto;
+        }
+    </style>
+</head >
+
+<body>
+    <section class="preview"></section>
+    <p>ESTOU BEM AQUI !</p>
+</body>
+    
+  
+<script>
+
+    let season  = "verão" ;
+    let resp;
+
+    if(season === "verão"){
+        resp = "ESTAMOS NO VERÃO !";
+    }else if (season === 'inverno'){
+        resp = "ESTAMOS NO INVERNO !";
+    }
+
+    const secsao =  document.querySelector ('section');
+
+    section.innerHTML = ' ';
+
+    let  para1  =  document.createElement ('p');
+    para1.textContent  =  resp;
+    secsao.appendChild(para1);
+</script>
+
+</html >    

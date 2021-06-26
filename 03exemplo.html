@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Conditionals: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <label>pontuação</label>
+        digite um número:  <input type="text" id="pontos" >
+    </form>
+
+    <section class="preview"></section>
+
+
+</body>
+  
+  
+<script>
+
+    let response;
+    let cscore =-11;
+    let machineActive = true; 
+
+    //cscore = document.getElementById('pontos');
+    alert(cscore);
+
+    if(machineActive){
+         switch (cscore){
+            case (cscore<0 ) || (cscore>100):       
+                alert(cscore);
+                response="esse valor é inválido";
+                break;
+            case (cscore<=19):
+                response="Pontução abaixo da média!";
+                break;
+            case (cscore<=39):
+                response="Pontuação proximo da média.";
+                break;
+            case (cscore<=69):
+                response="Pontuação acima da média ";
+                break;
+            case (cscore<=89):
+                response="Otima pontuação";
+                break;
+           default:
+               response ="Parabéns, otima pontuação!";
+               break;
+        }
+    }else{
+        response = "A máquina está desligada, ligue-a para iniciar o processo.";
+    }
+
+    const section = document.querySelector('section');
+
+    let ponto = document.createElement('p');
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+
+    ponto.textContent = cscore;
+
+    para1.textContent = `Sua pontuação é ${ cscore }`;
+    para2.textContent = response;
+
+    section.appendChild(ponto);
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+    
+</script>
+
+</html>

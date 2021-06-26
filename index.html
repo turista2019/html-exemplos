@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Exemplo aplicando JavaScript</title>
+  <style>
+    html{
+      font-family:  sans-serif;
+    }
+    body{
+      width: 50%;
+      max-width: 800px;
+      min-width: 400px;
+      margin: 0 auto;
+    }
+    .ultimoResultado{
+      color: white;
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Adivinhe o número</h1>
+
+  <div class="form">
+    <label for="campoPalpite">Digite seu palpite : </label>
+    <input type="text" id="campoPalpite" class="campoPalpite">
+    <input type="submit" value="Enviar palpite" class="envioPalpite">
+  </div>
+
+  <div clas="resultadoParas">
+    <p class="palpites"></p>
+    <p class="ultimoResultado"></p>
+    <p class="baixoOualto"></p>
+  </div>
+  <p value="Cheddar">I'M HERE</p>
+</body>
+
+<script>
+          
+  var numeroAleatorio = Math.floor(Math.random()*100)+1;
+
+  var palpites = document.querySelector('.palpites');
+  var ultimoResultado = document.querySelector('.ultimoResultado');
+  var baixoOualto = document.querySelector('.baixoOualto');
+
+  var envioPalpite = document.querySelector('.envioPalpite');
+  var campoPalpite = document.querySelector('.campoPalpite');
+
+  var contagemPalpites = 1;
+  var botaoReinicio;
+  var butao;
+  campoPalpite.focus();
+
+  function conferiPalpite() {
+
+    var palpiteUsuario = Number(campoPalpite.value);
+
+    if(contagemPalpites === 1 ){
+      palpites.textContent = 'Palpite anteriores: ';
+    }
+    palpites.textContent += palpiteUsuario + ' ';
+
+    if(palpiteUsuario === numeroAleatorio){
+      ultimoResultado.textContent = 'Parabéns! Você acertou  !';
+      ultimoResultado.style.backgroundColor = 'green';
+      baixoOualto.textContent = ' ';
+      setGameOver();
+    }
+    else if(contagemPalpites === 10){
+      ultimoResultado.textContent = '!!! Fim de Jogo !!!';
+      baixoOualto.textContent = ' ';
+      setGameOver();
+    }
+    else{
+      ultimoResultado.textContent = 'Errado!';
+      ultimoResultado.style.backgroundColor ='red';
+      if(palpiteUsuario<numeroAleatorio){
+        baixoOualto.textContent = 'Seu palpite está muito baixo !';
+      }
+      else if(palpiteUsuario>numeroAleatorio){
+        baixoOualto.textContent = 'Seu palpite está muito alto !';
+      }
+    }
+    contagemPalpites ++;
+    campoPalpite.value = ' ';
+    campoPalpite.focus();
+     
+  }
+  
+  envioPalpite.addEventListener('click', conferiPalpite);
+  botao();
+
+  function setGameOver(){
+    campoPalpite.disabled = true;
+    envioPalpite.disabled = true;
+    botaoReinicio = document.createElement('button');
+    botaoReinicio.textContent = 'Iniciar novo jogo !';
+    document.body.appendChild(botaoReinicio);
+    botaoReinicio.addEventListener('click', reiniciarJogo);
+  }
+
+  function reiniciarJogo(){
+    contagemPalpites = 1 ;
+
+    var reiniciarParas = document.querySelectorAll('.resultadoParas p');
+    for (var i=0; i< reiniciarParas.length; i++){
+      reiniciarParas[i].textContent = ' ';
+    }
+
+    botaoReinicio.parentNode.removeChild(botaoReinicio);
+
+    campoPalpite.disabled = false;
+    envioPalpite.disabled = false;
+    campoPalpite.value = ' ';
+    campoPalpite.focus();
+
+    ultimoResultado.style.backgroundColor = 'blue';
+
+    numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+  }
+  function botao () {
+      butao = document.createElement('button');
+      butao.textContent = 'aperte me !';
+      document.body.appendChild(butao);
+      butao.addEventListener('click', on);
+  }
+  function  on(){
+    alert('hello again !');}
+</script>
+</html>
+

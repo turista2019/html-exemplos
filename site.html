@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="output">
+  <head lang="pt-br">
+    <meta charset="utf-8">
+    <title>exemplo</title>
+  </head>
+  <body>
+    <label>escolha um tema</label>
+    <select id="cores">
+      <option value="">cores</option>
+      <option value="branco">branco</option>
+      <option value="preto">preto</option>
+      <option value="roxo">roxo</option>
+      <option value="amarelo">amarelo</option>
+    </select>
+  </body>
+  <script>
+    var select = document.querySelector('select');
+    var html = document.querySelector('.output');
+
+    select.onchange = function (){
+      var cor = select.value;
+      switch(cor){
+        case 'branca':
+          mudarcor('white','black');
+          break;
+        case 'preto':
+          mudarcor('black', 'white');
+          break;
+        case 'roxo':
+          mudarcor('purple', 'white');
+          break;
+        case 'amarelo':
+          mudarcor('yellow', 'purple');
+          break;
+      }
+    }
+    function mudarcor(bgColor, textColor) {
+      html.style.backgroundColor = bgColor;
+      html.style.color = textColor;
+    }
+
+  </script>
+</html>

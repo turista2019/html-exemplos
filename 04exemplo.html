@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Quarto Exemplo</title>
+        <style>
+            p{
+                color: purple;
+                margin: 0.5em 0;
+            }
+            *{
+                box-sizing: border-box;
+            }
+        </style>
+        <link rel="stylesheet" href="../styles.css"/>
+    </head>
+    <body>
+        <form>
+            <input type="button" value="ligar Máquina">
+            Senha: <input type="password" value="">
+        </form>
+        <section class="preview"></section>
+    </body>
+    <script>
+        let machineActive=true;
+        let pwd = "cheese";
+        let machineResult;
+        let pwdResult;
+
+        const butao = document.querySelector('input[type="button"]');
+        const Senha = document.querySelector('input[type="hidden"]');
+
+        pwd = senha;
+
+        butao.addEventListener('click', ligaDesliga);
+
+        function ligaDesliga(machineActive){
+            if(machineActive===true){
+                machineActive=false;
+                butao.value = "Máquina desligada";
+            }else{
+                machineActive=true;
+                butao.value = "Máquina ligada";
+            }
+        }
+
+        if(machineActive === true){
+            machineResult = "Máquina ligada!";
+            if(pwd==="cheese"){
+                pwdResult = "Login efetuado com sucesso!";
+            }else{
+                pwdResult = "Senha inválida!";
+            }
+        }else{
+            machineResult = "Máquina desligada";
+        }
+
+
+
+        const section = document.querySelector('section');
+        let para1 = document.createElement('p');
+        let para2 = document.createElement('p');
+
+        para1.textcontent = machineResult;
+        para2.textContent = pwdResult;
+
+        section.appendChild(para1);
+        section.appendChild(para2);
+    </script>
+</html>
